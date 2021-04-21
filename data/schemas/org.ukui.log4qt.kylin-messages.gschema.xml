@@ -1,5 +1,5 @@
-<schemalist gettext-domain="ukui-log4qt-kylin-ipmsg">
-    <schema id="org.ukui.ukui-log4qt-kylin-ipmsg" path="/org/ukui/ukui-log4qt-kylin-ipmsg/">
+<schemalist gettext-domain="ukui-log4qt-kylin-messages">
+    <schema id="org.ukui.ukui-log4qt-kylin-messages" path="/org/ukui/ukui-log4qt-kylin-messages/">
         <key type="s" name="log4j-handleqtmessages">
             <default>"true"</default>
             <summary>hook qt messages</summary>

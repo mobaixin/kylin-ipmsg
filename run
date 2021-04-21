@@ -6,4 +6,4 @@ cd build
 qmake ..
 make -j8
 sudo make install
-./src/$1
+./src/kylin-messages

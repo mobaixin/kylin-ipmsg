@@ -20,7 +20,7 @@ PKGCONFIG += gsettings-qt
 # 统一日志输出
 LIBS += -L/usr/lib/libukui-log4qt.so.1.0.0 -lukui-log4qt
 
-TARGET = kylin-wechat
+TARGET = kylin-messages
 TEMPLATE = app
 
 DEFINES += QT_DEPRECATED_WARNINGS
@@ -42,7 +42,6 @@ SOURCES += \
     $$PWD/view/common/xatom-helper.cpp  \
     $$PWD/view/common/daemondbus.cpp    \
     $$PWD/view/common/dbusadaptor.cpp   \
-    $$PWD
 
 HEADERS += \
     $$PWD/view/kyview.h \

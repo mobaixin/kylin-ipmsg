@@ -18,9 +18,9 @@
 #ifndef DBUSADAPTOR_H
 #define DBUSADAPTOR_H
 
-#define KYLIN_WECHAT_PATH "/"
-#define KYLIN_WECHAT_SERVICE "com.kylin.wechat"
-#define KYLIN_WECHAT_INTERFACE "com.kylin.wechat"
+#define KYLIN_MESSAGES_PATH "/"
+#define KYLIN_MESSAGES_SERVICE "com.kylin.messages"
+#define KYLIN_MESSAGES_INTERFACE "com.kylin.messages"
 
 #include <QObject>
 #include <QApplication>
@@ -35,7 +35,7 @@
 class DbusAdaptor: public QObject
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", KYLIN_WECHAT_SERVICE)
+    Q_CLASSINFO("D-Bus Interface", KYLIN_MESSAGES_SERVICE)
 
 public:
     DbusAdaptor(QObject *parent = 0);

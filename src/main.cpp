@@ -60,26 +60,27 @@ int main(int argc, char *argv[])
     app.setProperty("useFileDialog", false);
 
     // 连接DBus服务
-    QDBusInterface interface(KYLIN_WECHAT_SERVICE, 
-                             KYLIN_WECHAT_PATH,
-                             KYLIN_WECHAT_INTERFACE,
+    QDBusInterface interface(KYLIN_MESSAGES_SERVICE, 
+                             KYLIN_MESSAGES_PATH,
+                             KYLIN_MESSAGES_INTERFACE,
                              QDBusConnection::sessionBus());
     if (interface.isValid()) {
         // 调用拉起主界面的method
+        interface.call("showMainWindow");
         interface.call("showMainWindow");
     }
 
     // 文件锁实现VNC单例
     QStringList homePath = QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
     // 需要给文件锁加一个DISPLAY标识
-    int fd = open(QString(homePath.at(0) + "/.config/kylin-wechat%1.lock").arg(getenv("DISPLAY")).toUtf8().data(), O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+    int fd = open(QString(homePath.at(0) + "/.config/kylin-messages%1.lock").arg(getenv("DISPLAY")).toUtf8().data(), O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
     if (fd < 0)
     {
         exit(1);
     }
     if (lockf(fd, F_TLOCK, 0))
     {
-        syslog(LOG_ERR, "Can't lock single file, kylin-wechat is already running!");
+        syslog(LOG_ERR, "Can't lock single file, kylin-messages is already running!");
         exit(0);
     }
 
@@ -87,23 +88,23 @@ int main(int argc, char *argv[])
     QString qtTransPath;
     // /usr/share/qt5/translations
     qtTransPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
-    QString kylinWechatTransPath;
+    QString kylinMessagesTransPath;
 
 #ifdef QT_NO_DEBUG
-    if (QDir("/usr/share/kylin-calculator/translations").exists()) {
-        kylinWechatTransPath = "/usr/share/kylin-calculator/translations";
+    if (QDir("/usr/share/kylin-messages/translations").exists()) {
+        kylinMessagesTransPath = "/usr/share/kylin-messages/translations";
     }
     else {
-        kylinWechatTransPath = qApp->applicationDirPath() + "/.qm";
+        kylinMessagesTransPath = qApp->applicationDirPath() + "/.qm";
     }
 #else
-    kylinWechatTransPath = "translations";
+    kylinMessagesTransPath = "translations";
 #endif
 
     QString locale = QLocale::system().name();
     QTranslator trans_global, trans_qt;
     if (locale == "zh_CN") {
-        if(!trans_global.load(QLocale(), "kylin-calculator", "_", kylinWechatTransPath))
+        if(!trans_global.load(QLocale(), "kylin-messages", "_", kylinMessagesTransPath))
             qDebug() << "Load translations file" <<QLocale() << "failed!";
         else
             app.installTranslator(&trans_global);

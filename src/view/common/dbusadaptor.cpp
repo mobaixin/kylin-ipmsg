@@ -21,10 +21,10 @@ DbusAdaptor::DbusAdaptor(QObject *parent)
     : QObject(parent)
 {
     QDBusConnection connection = QDBusConnection::sessionBus();
-    if (!connection.registerService(KYLIN_WECHAT_SERVICE)) {
+    if (!connection.registerService(KYLIN_MESSAGES_SERVICE)) {
         return ;
     }
-    connection.registerObject(KYLIN_WECHAT_PATH, this, QDBusConnection::ExportAllSlots);
+    connection.registerObject(KYLIN_MESSAGES_PATH, this, QDBusConnection::ExportAllSlots);
 }
 
 DbusAdaptor::~DbusAdaptor()
