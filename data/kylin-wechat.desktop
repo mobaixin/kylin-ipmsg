@@ -1,0 +1,18 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Kylin Wechat
+Name[zh_CN]=新版传书
+Name[zh_HK]=LAN 通訊工具
+Name[zh_TW]=區域網路通訊工具
+Name[bo_CN]=ཆི་ལིན་ཡིག་སྐྱལ།
+GenericName[bo_CN]=ཆི་ལིན་ཡིག་སྐྱལ།
+Comment=Beautiful LAN chat tool
+Comment[zh_CN]=麒麟局域网聊天工具，提供局域网聊天和文件传输功能，界面美观.
+Comment[bo_CN]=ཆི་ལིན་དྲ་ཆུང་དྲ་མོལ་ལག་ཆ། དྲ་ཆུང་དྲ་མོལ་དང་ཡིག་ཆ་བརྒྱུད་བསྒྲགས་ཀྱི་བྱེད་ནུས་འཆར་དངོས་མཛེས་བཟོ་སོགས་ཀྱི་བྱེད་ནུས་མཁོ་འདོན་བྱས་ཡོད།
+Keywords=chat;talk;im;message;wechat;
+Exec=/usr/bin/kylin-wechat
+Icon=kylin-ipmsg
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=InstantMessaging;
