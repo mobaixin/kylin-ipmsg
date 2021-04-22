@@ -66,6 +66,6 @@ void KyView::setWidgetStyle()
     this->setBackgroundRole(QPalette::Base);
 
     // 毛玻璃效果
-    this->setProperty("useSystemStyleBur", true);
-    this->setAttribute(Qt::WA_TranslucentBackground, true);
+    // this->setProperty("useSystemStyleBur", true);
+    // this->setAttribute(Qt::WA_TranslucentBackground, true);
 }
