@@ -20,7 +20,6 @@
 // 生成静态实例
 KyView *KyView::getInstance()
 {   
-
     static KyView *instance = nullptr;
     if (nullptr == instance) {
         instance = new KyView();
@@ -30,6 +29,11 @@ KyView *KyView::getInstance()
 
 KyView::KyView(QWidget *parent)
 {
+    // 初始化组件
+    setWidgetUi();
+
+    // 设置组件样式
+    setWidgetStyle();
 }
 
 KyView::~KyView()
@@ -42,4 +46,26 @@ void KyView::pullUpWindow()
     this->showNormal();
     this->raise();
     this->activateWindow();
+}
+
+// 初始化组件
+void KyView::setWidgetUi()
+{
+    this->setFixedSize(WINDOWW, WINDOWH);
+
+    // mainWid = new QWidget(this);
+
+    mainLayout = new QVBoxLayout(this);
+
+}
+
+// 设置组件样式
+void KyView::setWidgetStyle()
+{
+    this->setAutoFillBackground(true);
+    this->setBackgroundRole(QPalette::Base);
+
+    // 毛玻璃效果
+    this->setProperty("useSystemStyleBur", true);
+    this->setAttribute(Qt::WA_TranslucentBackground, true);
 }

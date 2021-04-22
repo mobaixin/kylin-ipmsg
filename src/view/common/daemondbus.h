@@ -46,6 +46,9 @@ public:
 
     DaemonDbus() {}
 
+    // 生成静态实例
+    static DaemonDbus *getInstance();
+
 public slots:
 
     int daemonIsNotRunning();
@@ -55,11 +58,9 @@ public slots:
 
 /*
 // 使用方法
-DaemonIpcDbus *mDaemonIpcDbus;
-mDaemonIpcDbus = new DaemonIpcDbus();
-if (!mDaemonIpcDbus->daemonIsNotRunning()){
+if (!DaemonDbus::getInstance()->daemonIsNotRunning()){
     //增加标题栏帮助菜单、F1快捷键打开用户手册
-    mDaemonIpcDbus->showGuide("kylin-ipmsg");
+    DaemonDbus::getInstance()->showGuide("kylin-ipmsg");
 }
 */
 

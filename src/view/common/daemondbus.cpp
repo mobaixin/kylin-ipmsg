@@ -17,6 +17,16 @@
 
 #include "daemondbus.h"
 
+// 生成静态实例
+DaemonDbus *DaemonDbus::getInstance()
+{
+    static DaemonDbus *instance = nullptr;
+    if (nullptr == instance) {
+        instance = new DaemonDbus();
+    }
+    return instance;
+}
+
 int DaemonDbus::daemonIsNotRunning()
 {
     char service_name[SERVICE_NAME_SIZE];

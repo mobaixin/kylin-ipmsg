@@ -18,8 +18,15 @@
 #ifndef KYVIEW_H
 #define KYVIEW_H
 
+#define WINDOWW 350      //窗口宽度
+#define WINDOWH 686      //窗口高度
+#define TITLEH 40        //标题栏高度
+#define LOCALINFOH 140   //本机信息高度
+#define FRIENDSLISTH 506 //好友列表高度
+
 #include <QWidget>
 #include <QApplication>
+#include <QVBoxLayout>
 
 class KyView : public QWidget
 {
@@ -33,15 +40,20 @@ public:
     static KyView *getInstance();
 
     // 初始化组件
-    // void setWidgetUi();
+    void setWidgetUi();
 
     // 设置组件样式
-    // void setWidgetStyle();
+    void setWidgetStyle();
 
     // 最小化状态下拉起主界面
     void pullUpWindow();
+
 private:
-    /* data */
+    // 整体界面窗体
+    QWidget *mainWid;
+
+    // 整体界面布局
+    QVBoxLayout *mainLayout;
 };
 
 
