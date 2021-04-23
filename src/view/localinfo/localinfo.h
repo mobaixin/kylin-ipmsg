@@ -15,40 +15,48 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef TITLEBAR_H
-#define TITLEBAR_H
+#ifndef LOCALINFO_H
+#define LOCALINFO_H
 
 #include <QWidget>
+#include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QLabel>
 #include <QPushButton>
+#include <QLabel>
+#include <QLineEdit>
 
-#include "menumodule.h"
 #include "../common/globaldata.h"
 
-class TitleBar : public QWidget
+class LocalInfo : QWidget
 {
     Q_OBJECT
 public:
-    explicit TitleBar(QWidget *parent = nullptr);
-    ~TitleBar();
+    explicit LocalInfo(QWidget *parent = nullptr);
+    ~LocalInfo();
 
     // 初始化组件
     void setWidgetUi();
 
     // 设置组件样式
-    void setWidgetStyle(); 
+    void setWidgetStyle();
+    
+    QLabel *m_avatarLab;    // 头像
+    QLabel *m_userIPLab;    // IP地址
+    QLabel *m_userNameLab;  // 用户名
+    
+    QPushButton *m_changeNameBtn; // 修改本机昵称
+    QPushButton *m_openFolderBtn; // 打开文件保存目录
+
+    QLineEdit *m_searchEdit; // 搜索框
 
 private:
-    // 整体界面布局
-    QHBoxLayout *m_titleLayout;
-
-    QLabel *m_iconLab;
-    QLabel *m_nameLab;
-
-    QPushButton *m_miniBtn;//最小化按钮
-    QPushButton *m_closeBtn;//关闭
+    QVBoxLayout *m_localInfoLayout; // 本机信息总体布局
+    QHBoxLayout *m_nameLayout;      // 本机昵称布局
+    QVBoxLayout *m_ipLayout;        // 本机IP布局
+    QHBoxLayout *m_avatarLayout;    // 本机头像布局
 };
 
 
-#endif // TITLEBAR_H
+
+
+#endif // LOCALINFO_H

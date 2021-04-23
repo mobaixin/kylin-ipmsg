@@ -24,16 +24,18 @@
 #define LOCALINFOH 140   //本机信息高度
 #define FRIENDSLISTH 506 //好友列表高度
 
-#include <QWidget>
 #include <QApplication>
 #include <QVBoxLayout>
+
+#include "titlebar/titlebar.h"
+#include "localinfo/localinfo.h"
 
 class KyView : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit KyView(QWidget *parent = 0);
+    explicit KyView(QWidget *parent = nullptr);
     ~KyView();
 
     // 生成静态实例
@@ -43,17 +45,23 @@ public:
     void setWidgetUi();
 
     // 设置组件样式
-    void setWidgetStyle();
+    void setWidgetStyle(); 
 
     // 最小化状态下拉起主界面
     void pullUpWindow();
 
 private:
     // 整体界面窗体
-    QWidget *mainWid;
+    QWidget *m_mainWid;
+
+    // 标题栏
+    TitleBar *m_titleBar;
+
+    // 本机信息
+    LocalInfo *m_localInfo;
 
     // 整体界面布局
-    QVBoxLayout *mainLayout;
+    QVBoxLayout *m_mainLayout;
 };
 
 

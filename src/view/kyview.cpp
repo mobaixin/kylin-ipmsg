@@ -28,6 +28,7 @@ KyView *KyView::getInstance()
 }
 
 KyView::KyView(QWidget *parent)
+    : QWidget(parent)
 {
     // 初始化组件
     setWidgetUi();
@@ -55,7 +56,17 @@ void KyView::setWidgetUi()
 
     // mainWid = new QWidget(this);
 
-    mainLayout = new QVBoxLayout(this);
+    m_mainLayout = new QVBoxLayout(this);
+
+    // 标题栏
+    m_titleBar = new TitleBar(this);
+    m_titleBar->setFixedHeight(GlobalData::TITLEBAR_HEIGHT);
+
+    // 本机信息
+    m_localInfo = new LocalInfo(this);
+
+    // 将组件添加到布局中
+    m_mainLayout->addWidget(m_titleBar, Qt::AlignTop);
 
 }
 

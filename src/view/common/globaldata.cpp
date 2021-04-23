@@ -15,33 +15,23 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "titlebar.h"
+#include "globaldata.h"
 
-TitleBar::TitleBar(QWidget *parent) 
-    : QWidget(parent)
-{
-    // 初始化组件
-    setWidgetUi();
+// 主界面
+const int GlobalData::WINDOW_WIDTH  = 350;
+const int GlobalData::WINDOW_HEIGHT = 686;
 
-    // 设置组件样式
-    setWidgetStyle();
-}
+// 标题栏
+const int GlobalData::TITLEBAR_HEIGHT = 40;
 
-TitleBar::~TitleBar()
-{
-}
+// 本机信息
+const int GlobalData::LOCALINFO_HEIGHT = 140;
+const QSize AVATAR_LAB_SIZE    = QSize(60, 60);
+const QSize USER_NAME_LAB_SIZE = QSize(90, 20);
+const QSize USER_IP_LAB_SIZE   = QSize(170, 20);
+const QSize CHANGE_NAME_BTN_SIZE = QSize(16, 16);
+const QSize OPEN_FOLDER_BTN_SIZE = QSize(16, 16);
+const QSize SEARCH_EDIT_SIZE = QSize(334, 36);
 
-// 初始化组件
-void TitleBar::setWidgetUi()
-{
-    this->setFixedHeight(GlobalData::TITLEBAR_HEIGHT);
-
-    m_titleLayout = new QHBoxLayout(this);
-}
-
-// 设置组件样式
-void TitleBar::setWidgetStyle()
-{
-    this->setAutoFillBackground(true);
-    this->setBackgroundRole(QPalette::Base);
-}
+// 好友列表
+const int GlobalData::FRIEND_LIST_HEIGHT = 506;
