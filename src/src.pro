@@ -42,12 +42,27 @@ SOURCES += \
     $$PWD/view/common/xatom-helper.cpp  \
     $$PWD/view/common/daemondbus.cpp    \
     $$PWD/view/common/dbusadaptor.cpp   \
-    $$PWD
+    $$PWD \
+    global/utils/global_data.cpp \
+    global/utils/tcp_link.cpp \
+    network/protocol_analysis.cpp \
+    network/tcp_client.cpp \
+    network/tcp_module.cpp \
+    network/tcp_server.cpp \
+    network/udp_socket.cpp
 
 HEADERS += \
     $$PWD/view/kyview.h \
     $$PWD/view/common/xatom-helper.h    \
     $$PWD/view/common/daemondbus.h      \
-    $$PWD/view/common/dbusadaptor.h     \
+    $$PWD/view/common/dbusadaptor.h     \ \
+    global/declare/declare.h \
+    global/utils/global_data.h \
+    global/utils/tcp_link.h \
+    network/protocol_analysis.h \
+    network/tcp_client.h \
+    network/tcp_module.h \
+    network/tcp_server.h \
+    network/udp_socket.h
 
 RESOURCES += \
