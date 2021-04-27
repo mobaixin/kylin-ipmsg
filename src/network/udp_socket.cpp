@@ -18,6 +18,8 @@ UdpSocket::~UdpSocket()
     if (this->m_udpSocket != NULL) {
         delete this->m_udpSocket;
     }
+
+    slotOffline();
 }
 
 void UdpSocket::init(void)
@@ -36,7 +38,7 @@ void UdpSocket::init(void)
 
     /* 启动定时器 */
     this->m_timer = new QTimer;
-    connect(this->m_timer , &QTimer::timeout , this , &UdpSocket::slotSocketOnline);
+    connect(this->m_timer , &QTimer::timeout , this , &UdpSocket::slotOnline);
     this->m_timer->start(10000);
 
     return;
@@ -44,6 +46,8 @@ void UdpSocket::init(void)
 
 void UdpSocket::slotSocketRead(void)
 {
+    qDebug() << "Info  , UdpSocket , slotSocketRead , recv udp package";
+
     while (this->m_udpSocket->hasPendingDatagrams()) {
         QByteArray package;
         package.resize(65536);
@@ -61,7 +65,7 @@ void UdpSocket::slotSocketRead(void)
             QString peerListenPort = dataList.at(3);
 
             /* 维护tcp链接表 */
-            g_tcpMaintain tmp;
+            g_udpItem tmp;
             tmp.uuid = uuid;
             tmp.peerListenIp = peerListenIp;
             tmp.peerListenPort = peerListenPort;
@@ -82,6 +86,8 @@ void UdpSocket::slotSocketRead(void)
             qDebug() << "Info : UdpSocket , slotUdpSocketRead , recv udp offline";
         }
     }
+
+    return;
 }
 
 void UdpSocket::udpSocketBroadcast(bool flag)
@@ -90,7 +96,7 @@ void UdpSocket::udpSocketBroadcast(bool flag)
     QString udpListenPort = GlobalData::getInstance()->m_udpListenPort;
 
     /* 组装数据包 */
-    QStirng uuid = GlobalData::getInstance()->m_uuid;
+    QString uuid = GlobalData::getInstance()->m_uuid;
     QString tcpListenIp = GlobalData::getInstance()->m_tcpListenIP;
     QString tcpListenPort = GlobalData::getInstance()->m_tcpListenPort;
 
@@ -115,10 +121,16 @@ void UdpSocket::udpSocketBroadcast(bool flag)
 
         for (int j = 0 ; j < addrs.count() ; j++) {
             if (addrs.at(j).ip().protocol() == QAbstractSocket::IPv4Protocol && (addrs.at(j).broadcast().toString() != "")) {
-               this->m_udpSocket->writeDatagram(package.data() , package.length() , addrs.at(j).broadcast() , udpListenPort.toUShort());
+                this->m_udpSocket->writeDatagram(package.data() , package.length() , addrs.at(j).broadcast() , udpListenPort.toUShort());
+
+                qDebug() << "Debug : UdpSocket , udpSocketBroadcast , broadcast addr ---> " << addrs.at(j).broadcast();
+
+                this->m_udpSocket->flush();
             }
         }
     }
+
+    qDebug() << "Info : UdpSocket , udpSocketBroadcast , udp pkg ---> " << package;
 
     return;
 }

@@ -34,12 +34,46 @@
 #include <QDateTime>
 #include <sys/inotify.h>
 
+#include "network/tcp_server.h"
+#include "network/tcp_client.h"
+#include "network/udp_socket.h"
+#include "global/utils/global_data.h"
+#include "global/declare/declare.h"
+
 #include "view/kyview.h"
 #include "view/common/xatom-helper.h"
 #include "view/common/dbusadaptor.h"
 
 int main(int argc, char *argv[])
 {
+//#if 0
+    /* 用于测试网络模块 */
+    {
+        QApplication app(argc , argv);
+
+        GlobalData::getInstance();
+        UdpSocket *udp = new UdpSocket;
+        TcpServer *server = new TcpServer;
+
+
+        g_udpItem item;
+        item.uuid = QString("0x666666");
+        item.peerListenIp = QString("172.20.3.251");
+        item.peerListenPort = QString("6066");
+        GlobalData::getInstance()->m_tcpLink.udpMaintainAdd(item);
+
+        g_send send;
+        send.uuid = QString("0x666666");
+        send.type = QString("msg");
+        send.msgData = QString("HelloWorld");
+
+        TcpClient *client = new TcpClient;
+        client->tran(send);
+
+        app.exec();
+    }
+
+//#endif
     // 统一日志输出
     initUkuiLog4qt("kylin-ipmsg");
 

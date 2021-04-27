@@ -11,7 +11,7 @@ public:
     ~ProtocolAnalysis();
 
     QMap<QString , QString> analysisHeadBody(QString str);
-    QString encapsulationHeadBody(QMap<QString , QStirng> map);
+    QString encapsulationHeadBody(QMap<QString , QString> map);
 
 private:
 };

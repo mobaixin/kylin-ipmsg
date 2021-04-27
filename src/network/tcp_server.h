@@ -27,7 +27,7 @@ private slots:
     void slotEstablishNewLink(void);
     void slotRecvMsgSuccess(g_recv recv);
     void slotSendMsgSuccess(g_send send);
-    void slotMaintainTcpLinkAdd(g_tcpMaintain item);
+    void slotMaintainTcpLinkAdd(g_tcpItem item);
     void slotMaintainTcpLinkDelete(QString uuid);
 };
 

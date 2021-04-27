@@ -20,7 +20,7 @@ private:
 
 private slots:
     void slotSocketRead(void);
-    void slottOnline(void);
+    void slotOnline(void);
     void slotOffline(void);
 };
 

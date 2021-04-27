@@ -31,7 +31,7 @@ private:
     QTcpSocket *m_socket;
 
 signals:
-    void sigMaintainTcpLinkAdd(g_tcpMaintain item);
+    void sigMaintainTcpLinkAdd(g_tcpItem item);
     void sigMaintainTcpLinkDelete(QString uuid);
     void sigSendMsgSuccess(g_send send);
     void sigRecvMsgSuccess(g_recv recv);

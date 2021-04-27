@@ -3,6 +3,8 @@ QT += x11extras KWindowSystem
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+QMAKE_CXXFLAGS += -g
+
 # 适配窗口管理器圆角阴影
 LIBS +=-lpthread
 LIBS +=-lX11

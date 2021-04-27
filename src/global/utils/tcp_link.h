@@ -18,6 +18,7 @@ public:
     int tcpMaintainDelete(QString uuid);
     int udpMaintainAdd(g_udpItem);
     int udpMaintainDelete(QString uuid);
+    g_tcpMaintain select(QString uuid);
 
 private:
     pthread_rwlock_t m_rwLock;

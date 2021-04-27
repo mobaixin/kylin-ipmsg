@@ -56,3 +56,5 @@ typedef struct Recv
     QString fileName;
     QString filePath;
 } g_recv;
+
+#endif

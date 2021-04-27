@@ -14,6 +14,8 @@ TcpModule::TcpModule(QTcpSocket *socket)
     this->m_flag = false;
     this->m_uuid = "";
     this->m_socket = socket;
+
+    establishInterrupt();
 }
 
 /* 重载构造 ， 用于tcp client */
@@ -26,6 +28,14 @@ TcpModule::TcpModule(QTcpSocket *socket , g_send send)
     this->m_flag = true;
     this->m_uuid = send.uuid;
     this->m_socket = socket;
+
+    establishInterrupt();
+
+    if (send.type == QString("msg")) {
+        tranMsg(send);
+    } else if (send.type == QString("file")) {
+        tranFile(send);
+    }
 }
 
 TcpModule::~TcpModule()
@@ -90,7 +100,7 @@ void TcpModule::slotReadSocket(void)
         }
 
         /* 维护tcp链接表 */
-        g_tcpMaintain item;
+        g_tcpItem item;
         item.uuid = this->m_uuid;
         item.selfIp = GlobalData::getInstance()->m_tcpListenIP;
         item.selfPort = GlobalData::getInstance()->m_tcpListenPort;
@@ -142,5 +152,5 @@ void TcpModule::slotSocketDisconnect(void)
     /* 维护tcp链接表 */
     emit sigMaintainTcpLinkDelete(this->m_uuid);
 
-    return 0;
+    return;
 }

@@ -1,5 +1,7 @@
 #include "protocol_analysis.h"
 
+#include <QDebug>
+
 ProtocolAnalysis::ProtocolAnalysis()
 {
 
@@ -60,7 +62,7 @@ QMap<QString , QString> ProtocolAnalysis::analysisHeadBody(QString str)
         /* 解析value */
         size = end - separator;
         tmp = (char *)realloc(tmp , size);
-        memset(tmp , 0x00 , tmp);
+        memset(tmp , 0x00 , size);
 
         strncpy(tmp , separator + 1 , end - separator - 1);
 
@@ -87,7 +89,7 @@ QMap<QString , QString> ProtocolAnalysis::analysisHeadBody(QString str)
     return dst;
 }
 
-QString ProtocolAnalysis::encapsulationHeadBody(QMap<QString, QStirng> map)
+QString ProtocolAnalysis::encapsulationHeadBody(QMap<QString, QString> map)
 {
 
     QString dst;

@@ -1,9 +1,9 @@
 #ifndef __GLOBAL_DATA_H__
 #define __GLOBAL_DATA_H__
 
-#include <QString>
-
 #include "tcp_link.h"
+
+#include <QString>
 
 class GlobalData
 {

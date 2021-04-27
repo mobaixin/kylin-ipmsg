@@ -51,15 +51,15 @@ void TcpServer::slotEstablishNewLink(void)
     qDebug() << "Info : TcpServer , slotEstablishNewLink , new link coming in ...";
 
     /* 获取新链接 */
-    QTcpSocket socket = this->nextPendingConnection();
+    QTcpSocket *socket = this->nextPendingConnection();
 
     /* 加载功能模块 */
     TcpModule *tcpModule = new TcpModule(socket);
 
-    connect(tcpModule , &TcpModule::sigMaintainTcpLinkAdd , this , &TcpServer::slotMaintainTcpLinkAdd);
-    connect(tcpModule , &TcpModule::sigMaintainTcpLinkDelete , this , &TcpServer::slotMaintainTcpLinkDelete);
-    connect(tcpModule , &TcpModule::sigRecvMsgSuccess , this , &TcpServer::slotRecvMsgSuccess);
-    connect(tcpModule , &TcpModule::sigSendMsgSuccess , this , &TcpServer::slotSendMsgSuccess);
+    connect(tcpModule , &TcpModule::sigMaintainTcpLinkAdd , this , &TcpServer::slotMaintainTcpLinkAdd , Qt::BlockingQueuedConnection);
+    connect(tcpModule , &TcpModule::sigMaintainTcpLinkDelete , this , &TcpServer::slotMaintainTcpLinkDelete , Qt::BlockingQueuedConnection);
+    connect(tcpModule , &TcpModule::sigRecvMsgSuccess , this , &TcpServer::slotRecvMsgSuccess , Qt::BlockingQueuedConnection);
+    connect(tcpModule , &TcpModule::sigSendMsgSuccess , this , &TcpServer::slotSendMsgSuccess , Qt::BlockingQueuedConnection);
 
     /* 移至线程 */
     QThread *thread = new QThread;
@@ -69,7 +69,7 @@ void TcpServer::slotEstablishNewLink(void)
     return;
 }
 
-void TcpServer::slotMaintainTcpLinkAdd(g_tcpMaintain item)
+void TcpServer::slotMaintainTcpLinkAdd(g_tcpItem item)
 {
     qDebug() << "Info : TcpServer , slotMaintainTcpLinkAdd , uuid ---> " << item.uuid;
 

@@ -65,7 +65,7 @@ void GlobalData::getUdpListenPort(void)
 
 void GlobalData::getUuid(void)
 {
-    this->m_uuid = QString("0x666666");
+    this->m_uuid = QString("0x7777777");
 
     return;
 }

@@ -1,5 +1,7 @@
 #include "tcp_link.h"
 
+#include <QDebug>
+
 TcpLink::TcpLink()
 {
     if (init()) {
@@ -112,6 +114,8 @@ int TcpLink::udpMaintainAdd(g_udpItem item)
     /* 变量被置0 -> 存在 , 覆盖 */
     int flag = -1;
 
+    g_tcpMaintain *newItem;
+
     if (pthread_rwlock_wrlock(&(this->m_rwLock))) {
         qDebug() << "Error : TcpLink , udpMaintainAdd , lock rwLock fail";
         return -1;
@@ -131,7 +135,7 @@ int TcpLink::udpMaintainAdd(g_udpItem item)
     }
 
     /* 不存在相同uuid , 新增一条 */
-    g_tcpMaintain *newItem = new g_tcpMaintain;
+    newItem = new g_tcpMaintain;
     newItem->module = NULL;
 
     newItem->uuid = item.uuid;
@@ -203,7 +207,7 @@ void TcpLink::ergodic()
     qDebug() << "Info : tcpMaintain ergodic ......";
     qDebug() << "uuid      selfIp      selfPort      peerIp      peerPort      peerListenIp      peerListenPort      module";
 
-    for (int i = 0 ; i < this->m_tcpMaintain ; i++) {
+    for (int i = 0 ; i < this->m_tcpMaintain.count() ; i++) {
         g_tcpMaintain *tmp = this->m_tcpMaintain.at(i);
 
         std::string stdUuid = tmp->uuid.toStdString();
@@ -236,4 +240,39 @@ void TcpLink::ergodic()
     }
 
     return ;
+}
+
+g_tcpMaintain TcpLink::select(QString uuid)
+{
+    g_tcpMaintain item;
+    item.module = NULL;
+
+    if (pthread_rwlock_rdlock(&(this->m_rwLock))) {
+        qDebug() << "Error : TcpLink , select , lock rwLock fail";
+        return item;
+    }
+
+    for (int i = 0 ; i < this->m_tcpMaintain.count() ; i++) {
+        g_tcpMaintain *tmp = this->m_tcpMaintain.at(i);
+
+        if (tmp->uuid == uuid) {
+            item.uuid = tmp->uuid;
+            item.selfIp = tmp->selfIp;
+            item.selfPort = tmp->selfPort;
+            item.peerIp = tmp->peerIp;
+            item.peerPort = tmp->peerPort;
+            item.peerListenIp = tmp->peerListenIp;
+            item.peerListenPort = tmp->peerListenPort;
+            item.module = tmp->module;
+
+            break;
+        }
+    }
+
+    if (pthread_rwlock_unlock(&(this->m_rwLock))) {
+        qDebug() << "Error : TcpLink , select , unlock rwLock fail";
+        return item;
+    }
+
+    return item;
 }
