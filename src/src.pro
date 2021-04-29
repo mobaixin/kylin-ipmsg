@@ -50,7 +50,8 @@ SOURCES += \
     $$PWD/network/tcp_client.cpp \
     $$PWD/network/tcp_module.cpp \
     $$PWD/network/tcp_server.cpp \
-    $$PWD/network/udp_socket.cpp
+    $$PWD/network/udp_socket.cpp \
+    controller/control.cpp
 
 HEADERS += \
     $$PWD/view/kyview.h \
@@ -64,6 +65,7 @@ HEADERS += \
     $$PWD/network/tcp_client.h \
     $$PWD/network/tcp_module.h \
     $$PWD/network/tcp_server.h \
-    $$PWD/network/udp_socket.h
+    $$PWD/network/udp_socket.h \
+    controller/control.h
 
 RESOURCES += \

@@ -6,7 +6,7 @@
 UdpSocket::UdpSocket()
 {
     init();
-    slotOnline();
+    //slotOnline();
 }
 
 UdpSocket::~UdpSocket()
@@ -31,7 +31,7 @@ void UdpSocket::init(void)
     QString port = GlobalData::getInstance()->m_udpListenPort;
 
     if (this->m_udpSocket->bind(QHostAddress::AnyIPv4 , port.toUShort() , QUdpSocket::ReuseAddressHint) == true) {
-        qDebug() << "Info : UdpSocket , listen success";
+        qDebug() << "Info : UdpSocket , bind success";
     }
 
     connect(this->m_udpSocket , &QUdpSocket::readyRead , this , &UdpSocket::slotSocketRead);
@@ -55,7 +55,7 @@ void UdpSocket::slotSocketRead(void)
         int size = this->m_udpSocket->readDatagram(package.data() , package.size() , &peerIp);
         package.resize(size);
 
-        /* udp包接收完毕 , 解析upd包 */
+        /* udp包接收完毕 , 解析udp包 */
         QString data = QString::fromUtf8(package);
         QStringList dataList = data.split(" ");
         if (dataList.at(0) == "true") {

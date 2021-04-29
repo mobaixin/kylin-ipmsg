@@ -32,6 +32,7 @@ void GlobalData::init(void)
 {
     getTcpListenIp();
     getTcpListenPort();
+    getUdpListenPort();
     getUuid();
 
     return;

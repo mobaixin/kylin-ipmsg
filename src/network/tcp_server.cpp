@@ -89,14 +89,10 @@ void TcpServer::slotMaintainTcpLinkDelete(QString uuid)
 
 void TcpServer::slotRecvMsgSuccess(g_recv recv)
 {
-    qDebug() << "Info : TcpServer , slotRecvMsgSuccess , uuid ---> " << recv.uuid << "msgData ---> " << recv.msgData;
-
     emit sigTcpServerRecvMsgSuccess(recv);
 }
 
 void TcpServer::slotSendMsgSuccess(g_send send)
 {
-    qDebug() << "Info : TcpServer , slotSendMsgSuccess , uuid ---> " << send.uuid << "msgData ---> " << send.msgData;
-
     emit sigTcpServerSendMsgSuccess(send);
 }

@@ -20,8 +20,14 @@ private:
     QTcpSocket *m_socket;
     g_send m_send;
 
+signals:
+    void sigTcpClientSendMsgSuccess(g_send send);
+    void sigTcpClientRecvMsgSuccess(g_recv recv);
+
 private slots:
     void slotLinkSuccess(void);
+    void slotSendMsgSuccess(g_send send);
+    void slotRecvMsgSuccess(g_recv recv);
 };
 
 #endif

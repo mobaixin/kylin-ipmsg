@@ -55,6 +55,9 @@ void TcpClient::slotLinkSuccess(void)
     /* 加载功能模块 */
     TcpModule *module = new TcpModule(this->m_socket , this->m_send);
 
+    connect(module , &TcpModule::sigSendMsgSuccess , this , &TcpClient::slotSendMsgSuccess);
+    connect(module , &TcpModule::sigRecvMsgSuccess , this , &TcpClient::slotRecvMsgSuccess);
+
     /* 维护tcp链接表 */
     g_tcpItem item;
     item.uuid = this->m_send.uuid;
@@ -74,4 +77,14 @@ void TcpClient::slotLinkSuccess(void)
     thread->start();
 
     return;
+}
+
+void TcpClient::slotSendMsgSuccess(g_send send)
+{
+    emit sigTcpClientSendMsgSuccess(send);
+}
+
+void TcpClient::slotRecvMsgSuccess(g_recv recv)
+{
+    emit sigTcpClientRecvMsgSuccess(recv);
 }

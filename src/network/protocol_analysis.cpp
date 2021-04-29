@@ -32,8 +32,8 @@ QMap<QString , QString> ProtocolAnalysis::analysisHeadBody(QString str)
         return dst;
     }
 
-    QByteArray originalStrTmp = str.toLatin1();
-    char *originalStr = originalStrTmp.data();
+    std::string originalStrTmp = str.toStdString();
+    char *originalStr = const_cast<char *>(originalStrTmp.c_str());
 
     /* 获取指向数据第一个字符的指针 */
     data = strstr(originalStr , "\r\n\r\n");

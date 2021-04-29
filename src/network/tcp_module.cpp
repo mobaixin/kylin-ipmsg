@@ -105,7 +105,7 @@ void TcpModule::slotReadSocket(void)
         item.selfIp = GlobalData::getInstance()->m_tcpListenIP;
         item.selfPort = GlobalData::getInstance()->m_tcpListenPort;
         item.peerIp = this->m_socket->peerAddress().toString();
-        item.peerPort = QString(this->m_socket->peerPort());
+        item.peerPort = QString::number(this->m_socket->peerPort());
         item.module = this;
 
         /* 同步调用槽 , 接收返回值 */
