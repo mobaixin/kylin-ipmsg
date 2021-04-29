@@ -15,40 +15,38 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef TITLEBAR_H
-#define TITLEBAR_H
+#ifndef FRIENDLIST_H
+#define FRIENDLIST_H
 
-#include <QWidget>
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QPushButton>
+#include <QStringListModel>
+#include <QStringList>
+#include <QListView>
 
-// #include "menumodule.h"
-#include "../common/globaldata.h"
+#include <QMetaType>
 
-class TitleBar : public QWidget
+// #include "../../model/friendlistmodel.h"
+#include "friendItemDelegate.h"
+
+typedef struct {
+    QString iconPath;
+    QString singer;
+    QString songsNb;
+} MuItemData;
+
+Q_DECLARE_METATYPE(MuItemData)
+
+class FriendListView : public QListView
 {
-    Q_OBJECT
+
 public:
-    explicit TitleBar(QWidget *parent = nullptr);
-    ~TitleBar();
-
-    // 初始化组件
-    void setWidgetUi();
-
-    // 设置组件样式
-    void setWidgetStyle(); 
+    FriendListView(QListView *parent = nullptr);
+    ~FriendListView();
 
 private:
-    // 整体界面布局
-    QHBoxLayout *m_titleLayout;
-
-    QLabel *m_iconLab;
-    QLabel *m_nameLab;
-
-    QPushButton *m_miniBtn;//最小化按钮
-    QPushButton *m_closeBtn;//关闭
+    /* data */
 };
 
 
-#endif // TITLEBAR_H
+
+
+#endif // FRIENDLIST_H

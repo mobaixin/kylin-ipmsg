@@ -1,7 +1,5 @@
 #include "menumodule.h"
-#include "kyview.h"
-#include "xatom-helper.h"
-#include "sizedate.h"
+
 menuModule::menuModule(QWidget *parent = nullptr) : QWidget(parent)
 {
     init();

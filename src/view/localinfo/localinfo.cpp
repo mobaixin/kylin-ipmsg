@@ -46,15 +46,16 @@ void LocalInfo::setWidgetUi()
 
     m_searchEdit = new QLineEdit(this);
 
-    m_localInfoLayout = new QHBoxLayout(this);
+    m_localInfoLayout = new QVBoxLayout(this);
     m_nameLayout = new QHBoxLayout();
     m_ipLayout   = new QVBoxLayout();
     m_avatarLayout = new QHBoxLayout();
 
     // 对组件进行布局
     m_nameLayout->addWidget(m_userNameLab, Qt::AlignBottom);
-    m_nameLayout->addWidget(m_changeNameBtn, 1, Qt::AlignBottom);
-    m_nameLayout->addWidget(m_openFolderBtn, Qt::AlignBottom);
+    m_nameLayout->addWidget(m_changeNameBtn, Qt::AlignBottom | Qt::AlignLeft);
+    m_nameLayout->addStretch();
+    m_nameLayout->addWidget(m_openFolderBtn, Qt::AlignBottom | Qt::AlignRight);
     m_nameLayout->setMargin(0);
     m_nameLayout->setSpacing(0);
 
@@ -85,4 +86,32 @@ void LocalInfo::setWidgetStyle()
     avatarLabPe.setColor(QPalette::Background, QColor("#3D6BE5"));
     avatarLabPe.setColor(QPalette::WindowText, QColor("#FFFFFF"));
     m_avatarLab->setPalette(avatarLabPe);
+    m_avatarLab->setStyleSheet("border-radius:30px;background:#3D6BE5;color:#FFFFFF;");
+    
+    QFont avatarLabFont("SourceHanSansCN-Light", 28, 400);
+    m_avatarLab->setFont(avatarLabFont);
+    m_avatarLab->setAlignment(Qt::AlignCenter);
+
+    m_userNameLab->setFixedSize(GlobalData::USER_NAME_LAB_SIZE);
+
+    m_userIPLab->setFixedSize(GlobalData::USER_IP_LAB_SIZE);
+
+    m_changeNameBtn->setIcon(QIcon::fromTheme("document-edit-symbolic"));
+    m_changeNameBtn->setIconSize(GlobalData::CHANGE_NAME_BTN_ICON);
+    m_changeNameBtn->setFixedSize(GlobalData::CHANGE_NAME_BTN_SIZE);
+    m_changeNameBtn->setProperty("isWindowButton", 0x1);
+    m_changeNameBtn->setProperty("useIconHighlightEffect", 0x2);
+    m_changeNameBtn->setFlat(true);
+    
+    m_openFolderBtn->setIcon(QIcon::fromTheme("document-open-symbolic"));
+    m_openFolderBtn->setIconSize(GlobalData::OPEN_FOLDER_BTN_ICON);
+    m_openFolderBtn->setFixedSize(GlobalData::OPEN_FOLDER_BTN_SIZE);
+    m_openFolderBtn->setProperty("isWindowButton", 0x1);
+    m_openFolderBtn->setProperty("useIconHighlightEffect", 0x2);
+    m_openFolderBtn->setFlat(true);
+    
+    m_avatarLab->setText("S");
+    m_userNameLab->setText("沈剑心");
+    m_userIPLab->setText("172.17.7.99");
+
 }

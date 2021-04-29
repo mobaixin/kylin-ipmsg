@@ -29,6 +29,8 @@
 
 #include "titlebar/titlebar.h"
 #include "localinfo/localinfo.h"
+#include "common/globaldata.h"
+#include "friendlist/friendlist.h"
 
 class KyView : public QWidget
 {
@@ -59,6 +61,9 @@ private:
 
     // 本机信息
     LocalInfo *m_localInfo;
+
+    // 好友列表
+    FriendListView *m_friendListView;
 
     // 整体界面布局
     QVBoxLayout *m_mainLayout;

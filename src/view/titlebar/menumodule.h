@@ -21,9 +21,9 @@
 #include <QMetaEnum>
 #include <QApplication>
 
-//#include "titlebar.h"
-//#include "kyview.h"
-#include "daemondbus.h"
+#include "../kyview.h"
+#include "../common/xatom-helper.h"
+#include "../common/daemondbus.h"
 
 class menuModule : public QWidget
 {

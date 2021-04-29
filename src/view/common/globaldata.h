@@ -33,16 +33,19 @@ public:
     static const int TITLEBAR_HEIGHT;   //标题栏高度
 
     // 本机信息
-    static const int LOCALINFO_HEIGHT;  //本机信息高度
+    static const int LOCALINFO_HEIGHT;      //本机信息高度
     static const QSize AVATAR_LAB_SIZE;     // 本机头像尺寸
     static const QSize USER_NAME_LAB_SIZE;  // 本机昵称尺寸
     static const QSize USER_IP_LAB_SIZE;    // 本机IP尺寸 
     static const QSize CHANGE_NAME_BTN_SIZE;// 修改本机昵称按钮
+    static const QSize CHANGE_NAME_BTN_ICON;// 修改本机昵称按钮图标
     static const QSize OPEN_FOLDER_BTN_SIZE;// 打开文件保存目录按钮
-    static const QSize SEARCH_EDIT_SIZE;// 打开文件保存目录按钮
+    static const QSize OPEN_FOLDER_BTN_ICON;// 打开文件保存目录按钮图标
+    static const QSize SEARCH_EDIT_SIZE;    // 打开文件保存目录按钮
+    static const QSize SEARCH_EDIT_ICON;    // 打开文件保存目录按钮图标
 
     // 好友列表
-    static const int FRIEND_LIST_HEIGHT;//好友列表高度
+    static const int FRIEND_LIST_HEIGHT;    //好友列表高度
     
 };
 

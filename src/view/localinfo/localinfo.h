@@ -27,7 +27,7 @@
 
 #include "../common/globaldata.h"
 
-class LocalInfo : QWidget
+class LocalInfo : public QWidget
 {
     Q_OBJECT
 public:

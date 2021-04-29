@@ -25,13 +25,15 @@ const int GlobalData::WINDOW_HEIGHT = 686;
 const int GlobalData::TITLEBAR_HEIGHT = 40;
 
 // 本机信息
-const int GlobalData::LOCALINFO_HEIGHT = 140;
-const QSize AVATAR_LAB_SIZE    = QSize(60, 60);
-const QSize USER_NAME_LAB_SIZE = QSize(90, 20);
-const QSize USER_IP_LAB_SIZE   = QSize(170, 20);
-const QSize CHANGE_NAME_BTN_SIZE = QSize(16, 16);
-const QSize OPEN_FOLDER_BTN_SIZE = QSize(16, 16);
-const QSize SEARCH_EDIT_SIZE = QSize(334, 36);
+const int   GlobalData::LOCALINFO_HEIGHT = 140;
+const QSize GlobalData::AVATAR_LAB_SIZE    = QSize(60, 60);
+const QSize GlobalData::USER_NAME_LAB_SIZE = QSize(90, 20);
+const QSize GlobalData::USER_IP_LAB_SIZE   = QSize(170, 20);
+const QSize GlobalData::CHANGE_NAME_BTN_SIZE = QSize(25, 25);
+const QSize GlobalData::CHANGE_NAME_BTN_ICON = QSize(16, 16);
+const QSize GlobalData::OPEN_FOLDER_BTN_SIZE = QSize(25, 25);
+const QSize GlobalData::OPEN_FOLDER_BTN_ICON = QSize(16, 16);
+const QSize GlobalData::SEARCH_EDIT_SIZE = QSize(334, 36);
 
 // 好友列表
 const int GlobalData::FRIEND_LIST_HEIGHT = 506;

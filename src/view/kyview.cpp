@@ -65,8 +65,16 @@ void KyView::setWidgetUi()
     // 本机信息
     m_localInfo = new LocalInfo(this);
 
+    // 好友列表
+    m_friendListView = new FriendListView();
+
     // 将组件添加到布局中
     m_mainLayout->addWidget(m_titleBar, Qt::AlignTop);
+    m_mainLayout->addWidget(m_localInfo, Qt::AlignTop);
+    m_mainLayout->addWidget(m_friendListView, Qt::AlignTop);
+
+    m_mainLayout->setMargin(0);
+    m_mainLayout->setSpacing(0);
 
 }
 
