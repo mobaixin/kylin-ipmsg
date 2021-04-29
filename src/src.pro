@@ -3,6 +3,8 @@ QT += x11extras KWindowSystem
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+QMAKE_CXXFLAGS += -g
+
 # 适配窗口管理器圆角阴影
 LIBS +=-lpthread
 LIBS +=-lX11
@@ -49,6 +51,14 @@ SOURCES += \
     $$PWD/view/friendlist/friendlist.cpp\
     $$PWD/view/friendlist/friendItemDelegate.cpp    \
     $$PWD/model/friendlistmodel.cpp    \
+    $$PWD/global/utils/global_data.cpp \
+    $$PWD/global/utils/tcp_link.cpp \
+    $$PWD/network/protocol_analysis.cpp \
+    $$PWD/network/tcp_client.cpp \
+    $$PWD/network/tcp_module.cpp \
+    $$PWD/network/tcp_server.cpp \
+    $$PWD/network/udp_socket.cpp \
+    controller/control.cpp
 
 HEADERS += \
     $$PWD/view/kyview.h \
@@ -62,5 +72,15 @@ HEADERS += \
     $$PWD/view/friendlist/friendlist.h  \
     $$PWD/view/friendlist/friendItemDelegate.h    \
     $$PWD/model/friendlistmodel.h       \
+    $$PWD/view/common/dbusadaptor.h     \ \
+    $$PWD/global/declare/declare.h \
+    $$PWD/global/utils/global_data.h \
+    $$PWD/global/utils/tcp_link.h \
+    $$PWD/network/protocol_analysis.h \
+    $$PWD/network/tcp_client.h \
+    $$PWD/network/tcp_module.h \
+    $$PWD/network/tcp_server.h \
+    $$PWD/network/udp_socket.h \
+    controller/control.h
 
 RESOURCES += \
