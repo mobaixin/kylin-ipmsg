@@ -15,14 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef GLOBALDATA_H
-#define GLOBALDATA_H
+#ifndef GLOBALSIZEDATA_H
+#define GLOBALSIZEDATA_H
 
 #include <QString>
 #include <QSize>
 #include <QColor>
 
-class GlobalData
+class GlobalSizeData
 {
 public:
     // 主界面
@@ -49,4 +49,4 @@ public:
     
 };
 
-#endif // GLOBALDATA_H
+#endif // GLOBALSIZEDATA_H

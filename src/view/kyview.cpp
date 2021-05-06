@@ -60,7 +60,7 @@ void KyView::setWidgetUi()
 
     // 标题栏
     m_titleBar = new TitleBar(this);
-    m_titleBar->setFixedHeight(GlobalData::TITLEBAR_HEIGHT);
+    m_titleBar->setFixedHeight(GlobalSizeData::TITLEBAR_HEIGHT);
 
     // 本机信息
     m_localInfo = new LocalInfo(this);

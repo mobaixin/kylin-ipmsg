@@ -21,7 +21,8 @@
 #include <QStringListModel>
 #include <QStringList>
 #include <QListView>
-
+#include <QScrollBar>
+#include <QDebug>
 #include <QMetaType>
 
 // #include "../../model/friendlistmodel.h"

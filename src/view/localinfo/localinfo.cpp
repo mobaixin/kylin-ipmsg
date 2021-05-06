@@ -34,7 +34,7 @@ LocalInfo::~LocalInfo()
 // 初始化组件
 void LocalInfo::setWidgetUi()
 {
-    this->setFixedHeight(GlobalData::LOCALINFO_HEIGHT);
+    this->setFixedHeight(GlobalSizeData::LOCALINFO_HEIGHT);
 
     // 初始化组件及布局
     m_avatarLab = new QLabel(this);
@@ -80,7 +80,7 @@ void LocalInfo::setWidgetStyle()
     this->setBackgroundRole(QPalette::Base);
 
     // 本机头像
-    m_avatarLab->setFixedSize(GlobalData::AVATAR_LAB_SIZE);
+    m_avatarLab->setFixedSize(GlobalSizeData::AVATAR_LAB_SIZE);
 
     QPalette avatarLabPe;
     avatarLabPe.setColor(QPalette::Background, QColor("#3D6BE5"));
@@ -92,20 +92,20 @@ void LocalInfo::setWidgetStyle()
     m_avatarLab->setFont(avatarLabFont);
     m_avatarLab->setAlignment(Qt::AlignCenter);
 
-    m_userNameLab->setFixedSize(GlobalData::USER_NAME_LAB_SIZE);
+    m_userNameLab->setFixedSize(GlobalSizeData::USER_NAME_LAB_SIZE);
 
-    m_userIPLab->setFixedSize(GlobalData::USER_IP_LAB_SIZE);
+    m_userIPLab->setFixedSize(GlobalSizeData::USER_IP_LAB_SIZE);
 
     m_changeNameBtn->setIcon(QIcon::fromTheme("document-edit-symbolic"));
-    m_changeNameBtn->setIconSize(GlobalData::CHANGE_NAME_BTN_ICON);
-    m_changeNameBtn->setFixedSize(GlobalData::CHANGE_NAME_BTN_SIZE);
+    m_changeNameBtn->setIconSize(GlobalSizeData::CHANGE_NAME_BTN_ICON);
+    m_changeNameBtn->setFixedSize(GlobalSizeData::CHANGE_NAME_BTN_SIZE);
     m_changeNameBtn->setProperty("isWindowButton", 0x1);
     m_changeNameBtn->setProperty("useIconHighlightEffect", 0x2);
     m_changeNameBtn->setFlat(true);
     
     m_openFolderBtn->setIcon(QIcon::fromTheme("document-open-symbolic"));
-    m_openFolderBtn->setIconSize(GlobalData::OPEN_FOLDER_BTN_ICON);
-    m_openFolderBtn->setFixedSize(GlobalData::OPEN_FOLDER_BTN_SIZE);
+    m_openFolderBtn->setIconSize(GlobalSizeData::OPEN_FOLDER_BTN_ICON);
+    m_openFolderBtn->setFixedSize(GlobalSizeData::OPEN_FOLDER_BTN_SIZE);
     m_openFolderBtn->setProperty("isWindowButton", 0x1);
     m_openFolderBtn->setProperty("useIconHighlightEffect", 0x2);
     m_openFolderBtn->setFlat(true);

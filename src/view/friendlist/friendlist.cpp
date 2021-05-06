@@ -30,13 +30,17 @@ FriendListView::FriendListView(QListView *parent) :
     strList->append("aaaaaaaaaaa");
     strList->append("bbbbbbbbbbb");
     strList->append("ccccccccccc");
+    strList->insert(6, "66666666");
+
+    qDebug() << strList;
 
     strListModel->setStringList(*strList);
 
     FriendListModel *friendListModel = new FriendListModel();
-    friendListModel->addFriend();
-    friendListModel->addFriend();
-    friendListModel->addFriend();
+
+    for (int i = 0; i < 10; i++) {
+        friendListModel->addFriend();
+    }
 
     FriendItemDelegate *myItemDelegate = new FriendItemDelegate();
     this->setItemDelegate(myItemDelegate);
@@ -46,6 +50,8 @@ FriendListView::FriendListView(QListView *parent) :
     this->setSpacing(0);
     this->setDragEnabled(false);
     this->setFrameShape(QListView::NoFrame);
+    this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    this->verticalScrollBar()->setProperty("drawScrollBarGroove", false);
 
     // QThread::sleep(5);
 

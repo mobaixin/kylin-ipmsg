@@ -21,6 +21,9 @@
 #include <QObject>
 #include <QStandardItemModel>
 #include <QDebug>
+#include <QUuid>
+
+#include "../global/database/database.h"
 
 class FriendListModel : public QStandardItemModel
 {

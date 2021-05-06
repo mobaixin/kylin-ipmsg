@@ -29,7 +29,7 @@
 
 #include "titlebar/titlebar.h"
 #include "localinfo/localinfo.h"
-#include "common/globaldata.h"
+#include "common/globalsizedata.h"
 #include "friendlist/friendlist.h"
 
 class KyView : public QWidget

@@ -34,7 +34,7 @@ TitleBar::~TitleBar()
 // 初始化组件
 void TitleBar::setWidgetUi()
 {
-    this->setFixedHeight(GlobalData::TITLEBAR_HEIGHT);
+    this->setFixedHeight(GlobalSizeData::TITLEBAR_HEIGHT);
 
     m_titleLayout = new QHBoxLayout(this);
 }

@@ -49,15 +49,30 @@ void FriendListModel::addFriend()
 
     // Check if the same uuid is alreay in the friend list
 
+    QString avatar = "Z";
+    QString nickname = "Zhangsan";
+    QString msgContent = "listview";
+    QString msgTime = "10:22";
+    QString msgNum = "5";
+
     newItem = new QStandardItem();
-    newItem->setData("Z", FriendListModel::Avatar);
-    newItem->setData("Zhangsan", FriendListModel::Nickname);
-    newItem->setData("listview", FriendListModel::RecentMsgContent);
-    newItem->setData("10:22", FriendListModel::RecentMsgTime);
-    newItem->setData("5", FriendListModel::UnreadMsgNum);
+    newItem->setData(avatar, FriendListModel::Avatar);
+    newItem->setData(nickname, FriendListModel::Nickname);
+    newItem->setData(msgContent, FriendListModel::RecentMsgContent);
+    newItem->setData(msgTime, FriendListModel::RecentMsgTime);
+    newItem->setData(msgNum, FriendListModel::UnreadMsgNum);
     newItem->setData(true, FriendListModel::OnlineState);
 
     appendRow(newItem);
+
+    FriendInfoDataBase::getInstance();
+
+    QMap<QString, QString> strMap;
+    QMap<QString, int> intMap;
+    strMap.insert("m_friendUuid", QUuid::createUuid().toString());
+    strMap.insert("m_avatarUrl",  avatar);
+    strMap.insert("m_nickname",   nickname);
+    FriendInfoDataBase::getInstance()->insertData(new FriendInfoData(strMap, intMap));
 }
 void FriendListModel::updateFriend()
 {

@@ -25,7 +25,7 @@
 #include <QLabel>
 #include <QLineEdit>
 
-#include "../common/globaldata.h"
+#include "../common/globalsizedata.h"
 
 class LocalInfo : public QWidget
 {

@@ -48,32 +48,32 @@ int main(int argc, char *argv[])
 {
 //#if 0
     /* 用于测试网络模块 模拟客户端*/
-    {
-        QApplication app(argc , argv);
+//     {
+//         QApplication app(argc , argv);
 
-        Control *control = new Control;
-#if 0
-        g_udpItem item;
-        item.uuid = QString("0x7777777");
-        item.peerListenIp = QString("172.20.3.250");
-        item.peerListenPort = QString("6066");
-        GlobalData::getInstance()->m_tcpLink.udpMaintainAdd(item);
+//         Control *control = new Control;
+// #if 0
+//         g_udpItem item;
+//         item.uuid = QString("0x7777777");
+//         item.peerListenIp = QString("172.20.3.250");
+//         item.peerListenPort = QString("6066");
+//         GlobalData::getInstance()->m_tcpLink.udpMaintainAdd(item);
 
-        g_send send;
-        send.uuid = QString("0x7777777");
-        send.type = QString("msg");
-        send.msgData = QString("阿萨德；放假啊商店里；放假啊搜到放假哦啊配送积分大设计费");
+//         g_send send;
+//         send.uuid = QString("0x7777777");
+//         send.type = QString("msg");
+//         send.msgData = QString("阿萨德；放假啊商店里；放假啊搜到放假哦啊配送积分大设计费");
 
-        TcpClient *client = new TcpClient;
-        client->tran(send);
-#endif
+//         TcpClient *client = new TcpClient;
+//         client->tran(send);
+// #endif
 
-        app.exec();
-    }
+//         app.exec();
+//     }
 
 //#endif
     // 统一日志输出
-    initUkuiLog4qt("kylin-ipmsg");
+    // initUkuiLog4qt("kylin-ipmsg");
 
     // 适配4K屏以及分数缩放
     #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))

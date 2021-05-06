@@ -24,7 +24,7 @@
 #include <QPushButton>
 
 // #include "menumodule.h"
-#include "../common/globaldata.h"
+#include "../common/globalsizedata.h"
 
 class TitleBar : public QWidget
 {
