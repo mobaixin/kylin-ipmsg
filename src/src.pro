@@ -45,7 +45,7 @@ SOURCES += \
     $$PWD/view/common/daemondbus.cpp    \
     $$PWD/view/common/dbusadaptor.cpp   \
     $$PWD/view/common/globalsizedata.cpp\
-#    $$PWD/view/titlebar/menumodule.cpp  \
+    $$PWD/view/titlebar/menumodule.cpp  \
     $$PWD/view/titlebar/titlebar.cpp    \
     $$PWD/view/localinfo/localinfo.cpp  \
     $$PWD/view/friendlist/friendlist.cpp\
@@ -67,7 +67,7 @@ HEADERS += \
     $$PWD/view/common/daemondbus.h      \
     $$PWD/view/common/dbusadaptor.h     \
     $$PWD/view/common/globalsizedata.h  \
-#    $$PWD/view/titlebar/menumodule.h    \
+    $$PWD/view/titlebar/menumodule.h    \
     $$PWD/view/titlebar/titlebar.h      \
     $$PWD/view/localinfo/localinfo.h    \
     $$PWD/view/friendlist/friendlist.h  \
