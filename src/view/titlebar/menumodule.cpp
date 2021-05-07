@@ -52,6 +52,7 @@ void menuModule::initAction()
 
     m_menu = new QMenu();
     QList<QAction *> actions ;
+<<<<<<< HEAD
 //    QAction *actionStandard = new QAction(m_menu);
 //    actionStandard->setText(tr("Standard"));
 //    QAction *actionScientific = new QAction(m_menu);
@@ -63,11 +64,24 @@ void menuModule::initAction()
 //    separator->setSeparator(true);
     QAction *actionSetUp = new QAction(m_menu);
     actionSetUp->setText(tr("设置"));
+=======
+    QAction *actionStandard = new QAction(m_menu);
+    actionStandard->setText(tr("Standard"));
+    QAction *actionScientific = new QAction(m_menu);
+    actionScientific->setText(tr("Scientific"));
+    QAction *actionExchangeRate = new QAction(m_menu);
+    actionExchangeRate->setText(tr("Exchange Rate"));
+
+    QAction *separator = new QAction(m_menu);
+    separator->setSeparator(true);
+
+>>>>>>> 8496cc2fe94aaecee783aa4dd4e84e4fa764d0c5
     QAction *actionTheme = new QAction(m_menu);
     actionTheme->setText(tr("主题"));
     QAction *actionHelp = new QAction(m_menu);
     actionHelp->setText(tr("帮助"));
     QAction *actionAbout = new QAction(m_menu);
+<<<<<<< HEAD
     actionAbout->setText(tr("关于"));
 //    QAction *actionQuit = new QAction(m_menu);
 //    actionQuit->setText(tr("Quit"));
@@ -81,12 +95,26 @@ void menuModule::initAction()
             << actionHelp
             << actionAbout;
 //            << actionQuit;
+=======
+    actionAbout->setText(tr("About"));
+    QAction *actionQuit = new QAction(m_menu);
+    actionQuit->setText(tr("Quit"));
+    actions << actionStandard
+            << actionScientific
+            << actionExchangeRate
+            << separator
+            // << actionTheme
+            << actionHelp
+            << actionAbout
+            << actionQuit;
+>>>>>>> 8496cc2fe94aaecee783aa4dd4e84e4fa764d0c5
 
     m_menu->addActions(actions);
 
 //    互斥按钮组
     QMenu *themeMenu = new QMenu;
     QActionGroup *themeMenuGroup = new QActionGroup(this);
+<<<<<<< HEAD
     QAction *autoTheme = new QAction(tr("跟随主题"),this);
     themeMenuGroup->addAction(autoTheme);
     themeMenu->addAction(autoTheme);
@@ -96,6 +124,17 @@ void menuModule::initAction()
     themeMenu->addAction(lightTheme);
     lightTheme->setCheckable(true);
     QAction *darkTheme = new QAction(tr("深色主题"),this);
+=======
+    QAction *autoTheme = new QAction(tr("Auto"),this);
+    themeMenuGroup->addAction(autoTheme);
+    themeMenu->addAction(autoTheme);
+    autoTheme->setCheckable(true);
+    QAction *lightTheme = new QAction(tr("Light"),this);
+    themeMenuGroup->addAction(lightTheme);
+    themeMenu->addAction(lightTheme);
+    lightTheme->setCheckable(true);
+    QAction *darkTheme = new QAction(tr("Dark"),this);
+>>>>>>> 8496cc2fe94aaecee783aa4dd4e84e4fa764d0c5
     themeMenuGroup->addAction(darkTheme);
     themeMenu->addAction(darkTheme);
     darkTheme->setCheckable(true);
@@ -153,6 +192,7 @@ void menuModule::setStyleByThemeGsetting(){
 void menuModule::triggerMenu(QAction *act)
 {
     QString str = act->text();
+<<<<<<< HEAD
 //    if(tr("Quit") == str){
 //        emit menuModuleClose();
 //    }
@@ -238,6 +278,81 @@ void menuModule::helpAction()
         DaemonDbus::getInstance()->showGuide(appName);
     }
 }
+=======
+    if(tr("Quit") == str){
+        emit menuModuleClose();
+    }
+    else if(tr("About") == str){
+        aboutAction();
+    }
+    else if(tr("Help") == str){
+        helpAction();
+    }
+    else if(tr("Standard") == str){
+        emit menuModuleChanged(QString("standard"));
+    }
+    else if(tr("Scientific") == str){
+        emit menuModuleChanged(QString("scientific"));
+    }
+    else if(tr("Exchange Rate") == str){
+        emit menuModuleChanged(QString("exchange rate"));
+    }
+}
+
+void menuModule::triggerThemeMenu(QAction *act)
+{
+    if(!m_pGsettingThemeStatus)
+    {
+        m_pGsettingThemeStatus = new QGSettings(confPath.toLocal8Bit());  //m_pGsettingThemeStatus指针重复使用避免占用栈空间
+    }
+    QString str = act->text();
+    if("Light" == str){
+        themeStatus = themeLightOnly;
+        disconnect(m_pGsettingThemeData,&QGSettings::changed,this,&menuModule::dealSystemGsettingChange);
+        m_pGsettingThemeStatus->set("thememode","lightonly");
+//        disconnect()
+        setThemeLight();
+    }else if("Dark" == str){
+        themeStatus = themeBlackOnly;
+        disconnect(m_pGsettingThemeData,&QGSettings::changed,this,&menuModule::dealSystemGsettingChange);
+        m_pGsettingThemeStatus->set("thememode","darkonly");
+        setThemeDark();
+    }else{
+        themeStatus = themeAuto;
+        m_pGsettingThemeStatus->set("thememode","auto");
+        initGsetting();
+//        updateTheme();
+        themeUpdate();
+    }
+}
+
+void menuModule::aboutAction()
+{
+//    关于点击事件处理
+    // if (aboutWindow != nullptr) {
+    //     aboutWindow->hide();
+        
+    //     QTime dieTime = QTime::currentTime().addMSecs(50);
+    //     while( QTime::currentTime() < dieTime )
+    //         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+
+
+    //     aboutWindow->show();
+    //     // aboutWindow->activateWindow();
+    //     return ;
+    // }
+    initAbout();
+}
+
+void menuModule::helpAction()
+{
+    // 帮助点击事件处理
+    if(!DaemonDbus::getInstance()->daemonIsNotRunning()){
+        // qDebug() << "hahahahahaha" << appName;
+        DaemonDbus::getInstance()->showGuide(appName);
+    }
+}
+>>>>>>> 8496cc2fe94aaecee783aa4dd4e84e4fa764d0c5
 #include <QDialog>
 void menuModule::initAbout()
 {
@@ -276,7 +391,11 @@ void menuModule::initAbout()
 QHBoxLayout* menuModule::initTitleBar()
 {
     QLabel* titleIcon = new QLabel();
+<<<<<<< HEAD
     titleIcon->setPixmap(QIcon::fromTheme("kylin-ipmsg").pixmap(titleIcon->size()));
+=======
+    titleIcon->setPixmap(QIcon::fromTheme("kylin-calculator").pixmap(titleIcon->size()));
+>>>>>>> 8496cc2fe94aaecee783aa4dd4e84e4fa764d0c5
     titleIcon->setFixedSize(QSize(24,24));
     titleIcon->setScaledContents(true);
 
@@ -287,10 +406,17 @@ QHBoxLayout* menuModule::initTitleBar()
     titleBtnClose->setProperty("useIconHighlightEffect",0x8);
     titleBtnClose->setFlat(true);
     connect(titleBtnClose,&QPushButton::clicked,[=](){aboutWindow->close();});
+<<<<<<< HEAD
 
     titleText->setText(tr(appShowingName.toLocal8Bit()));
     titleText->setStyleSheet("font-size:14px;");
 
+=======
+    
+    titleText->setText(tr(appShowingName.toLocal8Bit()));
+    titleText->setStyleSheet("font-size:14px;");
+    
+>>>>>>> 8496cc2fe94aaecee783aa4dd4e84e4fa764d0c5
     QHBoxLayout *hlyt = new QHBoxLayout;
     hlyt->setSpacing(0);
     hlyt->setContentsMargins(4,4,4,4);
@@ -309,7 +435,11 @@ QVBoxLayout* menuModule::initBody()
 
     QLabel* bodyIcon = new QLabel();
     bodyIcon->setFixedSize(96,96);
+<<<<<<< HEAD
     bodyIcon->setPixmap(QIcon::fromTheme("kylin-ipmsg").pixmap(bodyIcon->size()));
+=======
+    bodyIcon->setPixmap(QIcon::fromTheme("kylin-calculator").pixmap(bodyIcon->size()));
+>>>>>>> 8496cc2fe94aaecee783aa4dd4e84e4fa764d0c5
     // bodyIcon->setStyleSheet("font-size:14px;");
     // bodyIcon->setScaledContents(true);
 
