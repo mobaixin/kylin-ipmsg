@@ -27,7 +27,7 @@
 #include <syslog.h>
 #include <QDebug>
 
-#include <ukui-log4qt.h>
+//#include <ukui-log4qt.h>
 
 #include <QFile>
 #include <QMutex>

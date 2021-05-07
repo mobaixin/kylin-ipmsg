@@ -23,7 +23,7 @@
 #include <QLabel>
 #include <QPushButton>
 
-// #include "menumodule.h"
+#include "menumodule.h"
 #include "../common/globalsizedata.h"
 
 class TitleBar : public QWidget
@@ -37,17 +37,31 @@ public:
     void setWidgetUi();
 
     // 设置组件样式
-    void setWidgetStyle(); 
+    void setWidgetStyle();
 
 private:
     // 整体界面布局
-    QHBoxLayout *m_titleLayout;
+    QHBoxLayout *pLayout;
 
-    QLabel *m_iconLab;
-    QLabel *m_nameLab;
+    QPushButton *m_pIconBtn;        // 应用图标
+    QLabel *m_pFuncLabel;           // 界面标识
+    menuModule *menuBar;            /*菜单按钮*/
+    QPushButton *m_pMinimizeButton; /*最小化按钮*/
+    QPushButton *m_pCloseButton;    /*关闭按钮*/
 
-    QPushButton *m_miniBtn;//最小化按钮
-    QPushButton *m_closeBtn;//关闭
+protected:
+
+#ifdef __V10__
+    // 进行鼠标界面的拖动
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void mouseMoveEvent(QMouseEvent *event);
+    virtual void mouseReleaseEvent(QMouseEvent *event);
+#endif
+
+private slots:
+
+    // 进行置顶、最小化、关闭操作
+    void onClicked();
 };
 
 

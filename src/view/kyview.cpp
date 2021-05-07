@@ -30,6 +30,7 @@ KyView *KyView::getInstance()
 KyView::KyView(QWidget *parent)
     : QWidget(parent)
 {
+
     // 初始化组件
     setWidgetUi();
 
@@ -64,6 +65,7 @@ void KyView::setWidgetUi()
 
     // 本机信息
     m_localInfo = new LocalInfo(this);
+    m_localInfo->setText("bb-本机","123.123.132.123");
 
     // 好友列表
     m_friendListView = new FriendListView();

@@ -39,21 +39,31 @@ public:
 
     // 设置组件样式
     void setWidgetStyle();
-    
-    QLabel *m_avatarLab;    // 头像
-    QLabel *m_userIPLab;    // IP地址
-    QLabel *m_userNameLab;  // 用户名
-    
-    QPushButton *m_changeNameBtn; // 修改本机昵称
-    QPushButton *m_openFolderBtn; // 打开文件保存目录
+    int w;
+    int h;
 
-    QLineEdit *m_searchEdit; // 搜索框
+    QLabel *u_LabelIcon;//头像
+    QLabel *s_LabelIcon;//搜索图标
+    QLabel *u_LabelName;/*名字*/
+    QLabel *u_LabelIp;/*IP*/
+    QPushButton *u_ButtonUpdate;/*修改本机昵称按钮*/
+    QPushButton *u_ButtonFile;/*打开文件保存目录按钮*/
+
+    void setText(QString name,QString IP);
+
+    QLineEdit *s_EditSearch;
 
 private:
     QVBoxLayout *m_localInfoLayout; // 本机信息总体布局
     QHBoxLayout *m_nameLayout;      // 本机昵称布局
     QVBoxLayout *m_ipLayout;        // 本机IP布局
     QHBoxLayout *m_avatarLayout;    // 本机头像布局
+    QHBoxLayout *m_searchLayout;    // 搜索图像布局文本框
+
+private slots:
+    // 进行置顶、最小化、关闭操作
+    void onClicked();
+    bool eventFilter(QObject *watch,QEvent *e);
 };
 
 
