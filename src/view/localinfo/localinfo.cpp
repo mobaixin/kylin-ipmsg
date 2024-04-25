@@ -97,6 +97,8 @@ void LocalInfo::setWidgetUi()
     s_EditSearch->setLayout(m_searchLayout);
 
     this->installEventFilter(this);//安装过滤器
+    u_ButtonUpdate->installEventFilter(this);
+    u_ButtonFile->installEventFilter(this);
     s_EditSearch->installEventFilter(this);
 
 
@@ -171,7 +173,7 @@ bool LocalInfo::eventFilter(QObject *watch,QEvent *e)
         s_LabelIcon->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
         s_EditSearch->setAlignment(Qt::AlignLeft);
         s_EditSearch->setTextMargins(s_LabelIcon->width(), 1, 1 , 1);//没有取消按钮的时候
-        qDebug()<<"MouseButtonPress";
+        qDebug()<<"MouseButtonPress不是lineedit";
     }
     if(e->type() == QEvent::MouseButtonPress && watch ==  s_EditSearch)
     {
@@ -180,7 +182,7 @@ bool LocalInfo::eventFilter(QObject *watch,QEvent *e)
         s_EditSearch->setTextMargins(s_LabelIcon->width(), 1, 1 , 1);//没有取消按钮的时候
         s_EditSearch->setFocus();
         s_EditSearch->setPlaceholderText("搜索");//提示文字
-             qDebug()<<"youdian";
+             qDebug()<<"MouseButtonPress是lineedit";
     }
 }
 

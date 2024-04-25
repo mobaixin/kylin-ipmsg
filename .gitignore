@@ -1,3 +1,6 @@
+.gitignore
+docs
+
 # C++ objects and libs
 *.slo
 *.lo
